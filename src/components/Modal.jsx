@@ -1,11 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useContacts } from "../context/ContactContext";
-import {
-  deleteAllContacts,
-  deleteContact,
-  editContact,
-} from "../services/crud";
 
 import styles from "./Modal.module.css";
 
@@ -16,14 +11,13 @@ const Modal = ({ message, contactId, setDeleteAll }) => {
 
   //delete contact confirmation
   const confirmDelete = () => {
+    console.log(state.contacts);
     dispatch({ type: "DELETE_CONTACT", payload: contactId });
-    deleteContact(contactId);
     dispatch({ type: "CLOSE_MODAL" });
   };
 
   //edit contact Confirmation
   const confirmEdit = () => {
-    editContact(state.formData, id);
     dispatch({ type: "EDIT_CONTACT", payload: { data: state.formData, id } });
     dispatch({ type: "RESET_IS_EDIT" });
     navigate("/contactslist");
@@ -33,7 +27,6 @@ const Modal = ({ message, contactId, setDeleteAll }) => {
 
   //Delete Multiple Contacts
   const confirmDeleteAll = () => {
-    deleteAllContacts(state.contacts);
     dispatch({ type: "DELETE_ALL" });
     setDeleteAll(false);
     dispatch({ type: "CLOSE_MODAL" });

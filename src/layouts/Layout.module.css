@@ -50,8 +50,8 @@
   margin-top: 10px;
   border-radius: 10px;
   background-color: var(--color-dark);
-  font-weight: 600;
   font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .footer a {

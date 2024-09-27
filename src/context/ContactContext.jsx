@@ -1,8 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { v4 } from "uuid";
 
-import api from "../services/config";
-
 const initialState = {
   contacts: [],
   formData: {
@@ -27,13 +25,15 @@ const reducer = (state, action) => {
     case "SET_CONTACTS":
       return {
         ...state,
-        contacts: payload,
+        contacts: payload || [],
       };
 
     case "SET_NEW_CONTACT":
+      const newData = [...state.contacts, payload];
+      localStorage.setItem("contacts", JSON.stringify(newData));
       return {
         ...state,
-        contacts: [...state.contacts, payload],
+        contacts: newData,
       };
 
     case "SET_FORM_DATA":
@@ -77,6 +77,14 @@ const reducer = (state, action) => {
       const newContacts = state.contacts.filter(
         (contact) => contact.id !== payload
       );
+      const storedContacts = JSON.parse(localStorage.getItem("contacts"));
+      const index = storedContacts.findIndex(
+        (contact) => contact.id === payload
+      );
+      if (index !== -1) {
+        storedContacts.splice(index, 1);
+        localStorage.setItem("contacts", JSON.stringify(storedContacts));
+      }
       return { ...state, contacts: newContacts };
 
     case "CONTACT_TO_EDIT":
@@ -96,6 +104,7 @@ const reducer = (state, action) => {
         (contact) => contact.id === payload.id
       );
       state.contacts[contactIndex] = payload.data;
+      localStorage.setItem("contacts", JSON.stringify([...state.contacts]));
 
       return {
         ...state,
@@ -126,12 +135,13 @@ const reducer = (state, action) => {
       };
 
     case "DELETE_ALL":
-      const undeletedContacts = state.contacts.filter(
+      const unDeletedContacts = state.contacts.filter(
         (contact) => contact.checked === false
       );
+      localStorage.setItem("contacts", JSON.stringify(unDeletedContacts));
       return {
         ...state,
-        contacts: undeletedContacts,
+        contacts: unDeletedContacts,
       };
     default:
       throw new Error("invalid action");
@@ -144,17 +154,13 @@ const ContactsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const fetchContacts = async () => {
-      try {
-        const response = await api.get("/contacts");
-        dispatch({ type: "SET_CONTACTS", payload: response });
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          console.log(error.message);
-        }
-      }
-    };
-    fetchContacts();
+    try {
+      const contacts = localStorage.getItem("contacts");
+      if (contacts)
+        dispatch({ type: "SET_CONTACTS", payload: JSON.parse(contacts) });
+    } catch (error) {
+      console.log(error.message);
+    }
   }, []);
 
   return (

@@ -5,6 +5,8 @@ const phonePattern = /^(\+98|0)?9\d{9}$/;
 let newAlert = {};
 
 const validateForm = (name, value, type) => {
+  //   console.log(name, value, type );
+
   if (name === "name" && !value) {
     newAlert.name = "This field is required";
   } else if (

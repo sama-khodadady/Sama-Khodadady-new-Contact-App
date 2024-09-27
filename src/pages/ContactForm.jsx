@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useContacts } from "../context/ContactContext";
-import { addContact } from "../services/crud.js";
 import { newAlert, validateForm } from "../helpers/validateForm.js";
 import Modal from "../components/Modal.jsx";
 
@@ -30,7 +29,6 @@ const ContactForm = () => {
       !state.formData.phone
     )
       return;
-    addContact(state.formData);
     dispatch({ type: "SET_NEW_CONTACT", payload: state.formData });
     navigate("/contactslist");
     dispatch({ type: "RESET_FORM_DATA" });
@@ -113,7 +111,9 @@ const ContactForm = () => {
       </button>
 
       {state.isModalOpen && (
-        <Modal message="Are you sure you want to Edit this contact?" />
+        <Modal
+          message="Are you sure you want to Edit this contact?"
+        />
       )}
     </div>
   );

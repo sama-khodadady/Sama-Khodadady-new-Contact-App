@@ -95,21 +95,17 @@ const ContactListPage = () => {
           </thead>
 
           <tbody>
-            {displayed.length === 0 ? (
+            {!displayed.length && (
               <tr>
                 <td colSpan={4}>
-                  {!state.contacts.length ? (
-                    <p className={styles.empty}>No contacts</p>
-                  ) : (
-                    <Loader />
-                  )}
+                  <p className={styles.empty}>No contacts yet!</p>
                 </td>
               </tr>
-            ) : (
-              displayed.map((contact) => (
-                <TableRow key={contact.id} data={contact} />
-              ))
             )}
+
+            {displayed.map((contact) => (
+              <TableRow key={contact.id} data={contact} />
+            ))}
           </tbody>
         </table>
 

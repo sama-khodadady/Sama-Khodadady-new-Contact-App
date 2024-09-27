@@ -5,6 +5,7 @@ import styles from "./Loader.module.css";
 const Loader = () => {
   return (
     <div className={styles.loader}>
+      
       <RotatingLines
         width="100px"
         height="100px"
