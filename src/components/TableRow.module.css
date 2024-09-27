@@ -1,0 +1,77 @@
+.row {
+  height: 80px;
+  border-bottom: 1px solid var(--color-grey);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.row .actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.row .actions div {
+  width: 125px;
+  margin-left: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+}
+
+.row .actions button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: var(--color-blue);
+  transition: all 0.2s ease-in-out;
+}
+
+.row .actions button:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.row .actions button:active {
+  transform: scale(0.95);
+}
+
+.row .actions .checkBox {
+  display: none;
+}
+
+.row .actions .show {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 425px) {
+  .row {
+    font-size: 10px;
+    height: 50px;
+  }
+  .row .actions button {
+    padding: 5px;
+    font-size: 5px;
+  }
+
+  .row .actions div {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .row .actions .show {
+    width: 10px;
+    height: 10px;
+  }
+
+  .row .actions {
+    margin-top: 15px;
+  }
+  .row .actions div {
+    align-items: center;
+    justify-content: center;
+  }
+}

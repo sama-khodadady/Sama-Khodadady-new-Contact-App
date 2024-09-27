@@ -1,0 +1,78 @@
+:root {
+  --color-dark: hsl(0, 0%, 19%);
+  --color-grey: #a3a3a3;
+  --color-blue: hsl(247, 88%, 64%);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: var(--color-dark);
+}
+
+.header .title {
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  color: var(--color-blue);
+}
+
+.header .contactIcon {
+  color: var(--color-blue);
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 1.75rem;
+}
+
+.header .addButton a {
+  padding: 4px 8px;
+  border: 2px dashed var(--color-blue);
+  color: var(--color-blue);
+  border-radius: 5px;
+  font-size: 22px;
+  transition: all 0.2s ease-in-out;
+}
+.header .addButton a:hover {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: var(--color-dark);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--color-blue);
+}
+
+@media (max-width: 425px) {
+  .header h1,
+  .header .contactIcon,
+  .header .addButton a {
+    font-size: 17px;
+  }
+
+  .footer {
+    font-weight: normal;
+    font-size: 10px;
+  }
+
+  .header .addButton a {
+    padding: 2px 4px;
+    border: 1px dashed;
+  }
+}

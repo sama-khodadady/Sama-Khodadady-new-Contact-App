@@ -1,0 +1,122 @@
+:root {
+  --color-dark: #303030;
+  --color-blue: #6552f4;
+  --color-grey: #a3a3a3;
+  --color-white: #fff;
+}
+
+.container {
+  padding: 30px 20px;
+  height: fit-content;
+  background-color: var(--color-dark);
+  border-radius: 10px;
+}
+
+.actions {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions .inputDiv {
+  width: 50%;
+  display: flex;
+  gap: 10px;
+}
+
+.actions .inputDiv input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  color: var(--color-blue);
+}
+
+.actions .inputDiv button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: var(--color-blue);
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.actions .inputDiv button:hover {
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+
+.actions .buttonDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions .buttonDiv button {
+  padding: 5px 5px 4px;
+  border-radius: 5px;
+  border: none;
+  color: var(--color-blue);
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.actions .buttonDiv button:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.actions .buttonDiv button:active,
+.actions .inputDiv button:active {
+  transform: scale(0.97);
+}
+
+.container .contactTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.container .contactTable table thead {
+  border-bottom: 2px solid var(--color-grey);
+  margin-bottom: 20px;
+}
+
+.container .contactTable table th {
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.container .contactTable table tbody .empty {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: var(--color-white);
+  margin-top: 1rem;
+  border-radius: 5px;
+  color: var(--color-red);
+}
+
+@media (max-width: 425px) {
+  .container .contactTable table th {
+    font-size: 10px;
+  }
+  .actions .inputDiv input,
+  .actions .inputDiv button,
+  .actions .buttonDiv button {
+    padding: 5px;
+    font-size: 10px;
+  }
+  .actions .inputDiv,
+  .actions .buttonDiv {
+    gap: 5px;
+  }
+  .container .contactTable table tbody .empty {
+    font-size: 12px;
+  }
+}

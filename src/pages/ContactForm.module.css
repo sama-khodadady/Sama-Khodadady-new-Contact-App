@@ -1,0 +1,137 @@
+:root {
+  --color-dark: #303030;
+  --color-LightBlue: #dadcdf;
+  --color-blue: #6552f4;
+  --color-red: #d32020;
+  --color-white: #fff;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-dark);
+  border-radius: 10px;
+  padding: 30px 0 20px;
+}
+
+.container form {
+  width: calc(100% - 10rem);
+  margin: 0 5rem;
+}
+
+.container form h1 {
+  font-size: 1.5rem;
+  color: var(--color-blue);
+  text-align: center;
+}
+
+.container .name {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.container .name div {
+  width: 100%;
+}
+.container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  color: var(--color-blue);
+}
+
+.container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.container form .email,
+.container form .phone {
+  margin-bottom: 1rem;
+  height: 100px;
+}
+
+.container button {
+  width: calc(100% - 10rem);
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  margin: 4px 5rem 0;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.container button:hover {
+  color: var(--color-blue);
+  background-color: var(--color-LightBlue);
+}
+
+.container button:active {
+  transform: scale(0.97);
+}
+
+.container input[type="number"]::-webkit-inner-spin-button,
+.container input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.container form span {
+  color: var(--color-red);
+}
+
+@media (max-width: 425px) {
+  .container form h1 {
+    font-size: 18px;
+  }
+
+  .container .name {
+    display: block;
+    height: fit-content;
+    margin-bottom: 0;
+  }
+
+  .container input {
+    padding: 5px;
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .container label {
+    font-size: 10px;
+    margin-bottom: 2px;
+  }
+
+  .container form .email,
+  .container form .phone {
+    margin-top: 5px;
+    margin-bottom: 0;
+    height: fit-content;
+  }
+
+  .container span {
+    font-size: 10px;
+  }
+
+  .container button {
+    padding: 5px;
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
